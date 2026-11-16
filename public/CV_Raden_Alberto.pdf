@@ -1,0 +1,98 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2452 >>
+stream
+BT
+/F1 14 Tf
+50 770 Td
+(CURRICULUM VITAE - RADEN ALBERTO LUMINTU NEGORO) Tj
+/F1 10 Tf
+0 -20 Td
+0 -15 Td
+(Jakarta Barat, Indonesia | lumintzbelajar@gmail.com | github.com/radenalberto) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(PROFIL SINGKAT) Tj
+0 -15 Td
+(Mahasiswa Semester 5 S1 Sistem Informasi di Universitas Tarumanagara \(IPK 3.23/4.00\).) Tj
+0 -15 Td
+(Antusias membangun aplikasi web, antarmuka mobile, dan solusi pengolahan data bersama tim.) Tj
+0 -15 Td
+(Terbuka untuk Magang IT / MBKM: Desember 2026 - Juni 2027 \(WFO / Hybrid\).) Tj
+0 -15 Td
+(Minat Peran: Web/Mobile Developer, Data Analyst, System Analyst, QA / IT Support.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(PENDIDIKAN & SERTIFIKASI) Tj
+0 -15 Td
+(- Universitas Tarumanagara \(UNTAR\) - S1 Sistem Informasi \(Semester 5 / 8, IPK 3.23 / 4.00\)) Tj
+0 -15 Td
+(  Kurikulum Inti: Analisis Big Data, Sistem Penunjang Keputusan, Manajemen Basis Data Oracle,) Tj
+0 -15 Td
+(  Analisis & Perancangan Sistem Informasi, Rekayasa Perangkat Lunak, Lean Six Sigma.) Tj
+0 -15 Td
+(- Python Pro \(2nd Year\) - Algonova by Algorithmics \(Desember 2024 - September 2025\)) Tj
+0 -15 Td
+(  Pelatihan pemrograman Python lanjutan: struktur data dan Object-Oriented Programming \(OOP\).) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(PROYEK PILIHAN \(2026\)) Tj
+0 -15 Td
+(1. CatatanApp - Aplikasi Web Catatan Personal \(raln-catatanweb.onrender.com\)) Tj
+0 -15 Td
+(   Full-stack web app dengan Next.js App Router, TypeScript, Tailwind CSS, Turso DB, Resend API.) Tj
+0 -15 Td
+(2. Aplikasi Belanja Pakaian Mobile \(Inspirasi Uniqlo\)) Tj
+0 -15 Td
+(   Aplikasi lintas platform \(Flutter & Dart\). Berkontribusi ~50% UI & kolaborasi debugging backend.) Tj
+0 -15 Td
+(3. Pengolahan & Visualisasi Big Data \(NYC Taxi & Data Gempa\)) Tj
+0 -15 Td
+(   Data cleansing, transformasi ETL/OLAP, dan visualisasi di Google Colab \(Python, Pandas\).) Tj
+0 -15 Td
+(4. Sistem Penunjang Keputusan \(Profile Matching & AHP\)) Tj
+0 -15 Td
+(   Pemodelan matriks bobot kriteria & pemeringkatan kandidat menggunakan C++.) Tj
+0 -15 Td
+() Tj
+0 -15 Td
+(KEAHLIAN TEKNIS) Tj
+0 -15 Td
+(- Web & Mobile: Next.js, TypeScript, JavaScript, Tailwind CSS, Flutter, Dart, HTML5, CSS3) Tj
+0 -15 Td
+(- Data & Basis Data: Python, Pandas, Oracle Database \(SQL & Dasar DBA\), Turso DB, ETL & OLAP) Tj
+0 -15 Td
+(- Sistem & Pemrograman: C++ \(OOP\), Perancangan Sistem \(ERD\), SPK, Lean Six Sigma) Tj
+0 -15 Td
+(- Tools & Kolaborasi: Git, GitHub, VS Code, Android Studio, Google Colab, Render) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000002744 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2814
+%%EOF
