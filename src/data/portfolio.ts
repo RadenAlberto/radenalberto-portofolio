@@ -10,6 +10,8 @@ export interface ProjectItem {
   detail: string;
   stack: string[];
   liveUrl?: string;
+  /** Opsional: path foto/screenshot proyek di folder public/proyek/, misal '/proyek/catatan-app.png' */
+  imageUrl?: string;
   diagramType: 'catatan' | 'fashion' | 'bigdata' | 'spk';
 }
 
@@ -29,9 +31,13 @@ export interface SkillGroup {
 
 export interface CertificateItem {
   serial: string;
+  /** Inisial 2 huruf di kotak kiri sertifikat, misal 'PY', 'SI', 'WD', 'DA' */
+  code?: string;
   title: string;
   period: string;
   description: string;
+  /** Opsional: path file sertifikat (.jpg/.png/.pdf) di folder public/sertifikat/, misal '/sertifikat/python-pro.pdf' */
+  fileUrl?: string;
 }
 
 export const PROFILE = {
@@ -81,6 +87,11 @@ export const FOCUS_ITEMS: FocusItem[] = [
   },
 ];
 
+/*
+  CARA MENAMBAH FOTO PROYEK:
+  1. Taruh file foto/screenshot di folder: public/proyek/  (misal: public/proyek/catatan.png)
+  2. Tambahkan baris imageUrl: '/proyek/catatan.png', di dalam data proyek di bawah ini.
+*/
 export const PROJECTS: ProjectItem[] = [
   {
     id: 'catatan-app',
@@ -180,9 +191,24 @@ export const SKILL_GROUPS: SkillGroup[] = [
   },
 ];
 
+/*
+  CARA MENAMBAH SERTIFIKAT BARU:
+  1. Taruh file sertifikat (.jpg / .png / .pdf) di folder: public/sertifikat/
+  2. Copy-paste 1 blok { ... } di bawah ini, lalu ubah serial, code, title, period, description, dan fileUrl.
+     Contoh:
+     {
+       serial: 'NO. 003',
+       code: 'DA',
+       title: 'Nama Sertifikat Kamu — Penyelenggara',
+       period: 'Bulan Tahun',
+       description: 'Ringkasan singkat materi atau pencapaian sertifikat.',
+       fileUrl: '/sertifikat/nama-file-kamu.jpg',
+     },
+*/
 export const CERTIFICATES: CertificateItem[] = [
   {
     serial: 'NO. 001',
+    code: 'PY',
     title: 'Python Pro (2nd Year) — Algonova by Algorithmics',
     period: 'Desember 2024 – September 2025',
     description:
@@ -190,6 +216,7 @@ export const CERTIFICATES: CertificateItem[] = [
   },
   {
     serial: 'NO. 002',
+    code: 'SI',
     title: 'Kurikulum Inti S1 Sistem Informasi — Universitas Tarumanagara',
     period: 'Semester 1 – Semester 5 (Aktif)',
     description:

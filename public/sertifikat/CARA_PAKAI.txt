@@ -1,0 +1,1 @@
+Taruh file sertifikat (.jpg, .png, atau .pdf) di folder ini, lalu daftarkan di src/data/portfolio.ts dengan format fileUrl: '/sertifikat/nama-file.jpg'

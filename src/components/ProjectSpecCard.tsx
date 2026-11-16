@@ -1,7 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowUpRight, ExternalLink, Terminal, X } from 'lucide-react';
 import { ProjectDiagram } from './ProjectDiagram';
 import { ProjectItem } from '../data/portfolio';
+
+const ProjectMediaPreview: React.FC<{
+  project: ProjectItem;
+  className?: string;
+}> = ({ project, className = 'h-44' }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+
+  useEffect(() => {
+    setImgFailed(false);
+  }, [project.imageUrl]);
+
+  if (project.imageUrl && !imgFailed) {
+    return (
+      <div className={`w-full ${className} bg-slate-900/90 overflow-hidden`}>
+        <img
+          src={project.imageUrl}
+          alt={`Pratinjau ${project.title}`}
+          referrerPolicy="no-referrer"
+          onError={() => setImgFailed(true)}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+      </div>
+    );
+  }
+
+  return <ProjectDiagram type={project.diagramType} />;
+};
 
 interface ProjectSpecCardProps {
   project: ProjectItem;
@@ -55,7 +82,7 @@ export const ProjectSpecCard: React.FC<ProjectSpecCardProps> = ({
           </div>
 
           <div className="rounded-md overflow-hidden border border-slate-200 dark:border-white/10">
-            <ProjectDiagram type={project.diagramType} />
+            <ProjectMediaPreview project={project} className="h-40 sm:h-44" />
           </div>
 
           <div className="flex items-center justify-between font-mono text-[11px] text-slate-500 dark:text-slate-400 pt-1">
@@ -150,7 +177,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           </button>
         </div>
 
-        <ProjectDiagram type={project.diagramType} />
+        <ProjectMediaPreview project={project} className="h-56 sm:h-64" />
 
         <div className="p-6 sm:p-8 space-y-5">
           <div>

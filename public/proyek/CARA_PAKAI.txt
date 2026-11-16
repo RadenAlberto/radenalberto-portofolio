@@ -1,0 +1,1 @@
+Taruh foto atau screenshot proyek (.jpg, .png, .webp) di folder ini, lalu tambahkan imageUrl: '/proyek/nama-foto.png' pada proyek terkait di src/data/portfolio.ts

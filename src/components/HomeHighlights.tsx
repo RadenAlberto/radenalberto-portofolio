@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Download, Gamepad2, Headphones } from 'lucide-react';
+import { ArrowRight, Download, Eye, Gamepad2, Headphones } from 'lucide-react';
+import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { FocusArchitectureIllustration } from './FocusSection';
 import { HeroSection } from './HeroSection';
 import { LofiWorkspaceDisc } from './OffTheClockSection';
@@ -8,6 +9,7 @@ import { RevealOnScroll } from './RevealOnScroll';
 import { UntarBuilding3D } from './UntarBuilding3D';
 import {
   CERTIFICATES,
+  CertificateItem,
   FOCUS_ITEMS,
   PROFILE,
   PROJECTS,
@@ -37,6 +39,7 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
   theme = 'dark',
 }) => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
   const deckProjects = PROJECTS.slice(0, 3);
   const weeks = useMemo(() => getContributionWeeks(), []);
   const totalContribs = useMemo(
@@ -341,12 +344,12 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
                   <div className="sm:w-24 shrink-0 flex items-center justify-center p-4 bg-slate-50 dark:bg-[#0D0F17]">
                     <div
                       className={`w-12 h-12 rounded-lg border flex items-center justify-center font-display text-xl font-extrabold ${
-                        idx === 0
+                        idx % 2 === 0
                           ? 'border-[#3B82F6]/40 bg-[#3B82F6]/10 text-[#2563EB] dark:text-[#60A5FA]'
                           : 'border-[#06B6D4]/40 bg-[#06B6D4]/10 text-[#0891B2] dark:text-[#22D3EE]'
                       }`}
                     >
-                      {idx === 0 ? 'PY' : 'SI'}
+                      {cert.code ?? String(idx + 1).padStart(2, '0')}
                     </div>
                   </div>
                   <div
@@ -369,6 +372,18 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
                     <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       {cert.description}
                     </p>
+                    {cert.fileUrl && (
+                      <div className="pt-1">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedCert(cert)}
+                          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#3B82F6] dark:text-[#06B6D4] hover:underline cursor-pointer"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Lihat File Sertifikat</span>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -425,6 +440,10 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
       <ProjectDetailModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
+      />
+      <CertificatePreviewModal
+        certificate={selectedCert}
+        onClose={() => setSelectedCert(null)}
       />
     </div>
   );

@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Download, Github } from 'lucide-react';
+import { ArrowRight, Download, Eye, Github } from 'lucide-react';
+import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { RevealOnScroll } from './RevealOnScroll';
 import {
   CERTIFICATES,
+  CertificateItem,
   ContributionDay,
   PROFILE,
   SKILL_GROUPS,
@@ -12,6 +14,7 @@ import {
 export const SkillsCertsSection: React.FC = () => {
   const weeks = useMemo(() => getContributionWeeks(), []);
   const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null);
+  const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
 
   const totalContribs = useMemo(
     () => weeks.flat().reduce((acc, day) => acc + day.count, 0),
@@ -80,7 +83,7 @@ export const SkillsCertsSection: React.FC = () => {
           {/* Right Column: Perforated Ticket-Style Credential Slips */}
           <div className="lg:col-span-7 space-y-5">
             {CERTIFICATES.map((cert, idx) => {
-              const badgeCode = idx === 0 ? 'PY' : 'SI';
+              const badgeCode = cert.code ?? String(idx + 1).padStart(2, '0');
               return (
                 <div
                   key={cert.serial}
@@ -90,7 +93,7 @@ export const SkillsCertsSection: React.FC = () => {
                   <div className="sm:w-28 shrink-0 flex items-center justify-center p-5 bg-slate-50 dark:bg-[#0D0F17]">
                     <div
                       className={`w-14 h-14 rounded-lg border flex items-center justify-center font-display text-2xl font-extrabold tracking-tight ${
-                        idx === 0
+                        idx % 2 === 0
                           ? 'border-[#3B82F6]/40 bg-[#3B82F6]/10 text-[#2563EB] dark:text-[#60A5FA]'
                           : 'border-[#06B6D4]/40 bg-[#06B6D4]/10 text-[#0891B2] dark:text-[#22D3EE]'
                       }`}
@@ -132,6 +135,19 @@ export const SkillsCertsSection: React.FC = () => {
                     <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                       {cert.description}
                     </p>
+
+                    {cert.fileUrl && (
+                      <div className="pt-1">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedCert(cert)}
+                          className="inline-flex items-center gap-1.5 font-mono text-xs text-[#3B82F6] dark:text-[#06B6D4] hover:underline cursor-pointer"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Lihat File Sertifikat</span>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
@@ -249,6 +265,10 @@ export const SkillsCertsSection: React.FC = () => {
           </div>
         </div>
       </RevealOnScroll>
+      <CertificatePreviewModal
+        certificate={selectedCert}
+        onClose={() => setSelectedCert(null)}
+      />
     </section>
   );
 };
