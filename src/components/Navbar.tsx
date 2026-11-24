@@ -36,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 dark:border-white/10 bg-[#F8FAFC]/85 dark:bg-[#090A0F]/85 backdrop-blur-md transition-colors duration-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4 sm:gap-6">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2 sm:gap-6">
         {/* Left: Terminal icon + Name + Monospace Sub-label */}
         <button
           type="button"
@@ -128,10 +128,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             type="button"
             onClick={onOpenCommandPalette}
             aria-label="Buka pencarian cepat Command Palette"
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-[#11131C] hover:border-[#3B82F6]/50 dark:hover:border-[#06B6D4]/50 text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-nowrap shrink-0 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]"
+            className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-[#11131C] hover:border-[#3B82F6]/50 dark:hover:border-[#06B6D4]/50 text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-nowrap shrink-0 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]"
           >
             <Search className="w-3.5 h-3.5 text-[#3B82F6] dark:text-[#06B6D4]" />
-            <span>CTRL + K</span>
+            <span className="hidden sm:inline">CTRL + K</span>
           </button>
 
           {/* Mobile Menu Toggle */}

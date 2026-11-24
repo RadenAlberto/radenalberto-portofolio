@@ -46,6 +46,8 @@ export const PROFILE = {
   email: 'lumintzbelajar@gmail.com',
   githubUrl: 'https://github.com/radenalberto',
   cvUrl: '/CV_Raden_Alberto.pdf',
+  /** Taruh file foto profil di folder: public/foto-profil.jpeg (atau ubah path di bawah sesuai nama file) */
+  photoUrl: '/foto-profil.jpeg',
   availability: 'Terbuka untuk Magang IT / MBKM • Desember 2026 – Juni 2027 (WFO / Hybrid)',
   headlineSub:
     'Mahasiswa Semester 5 S1 Sistem Informasi di Universitas Tarumanagara yang antusias membangun aplikasi web, antarmuka mobile, dan solusi pengolahan data bersama tim.',

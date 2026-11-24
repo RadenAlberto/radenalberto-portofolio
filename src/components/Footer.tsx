@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyEmail }) => {
           type="button"
           onClick={scrollToTop}
           aria-label="Kembali ke atas halaman"
-          className="fixed bottom-5 right-5 z-30 w-12 h-12 rounded-md border border-slate-300 dark:border-white/20 bg-white/95 dark:bg-[#11131C]/95 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] flex flex-col items-center justify-center gap-0.5 text-[10px] font-mono font-semibold text-slate-800 dark:text-slate-100 shadow-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
+          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-md border border-slate-300 dark:border-white/20 bg-white/95 dark:bg-[#11131C]/95 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] flex flex-col items-center justify-center gap-0.5 text-[10px] font-mono font-semibold text-slate-800 dark:text-slate-100 shadow-lg transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
         >
           <ArrowUp className="w-3.5 h-3.5 text-[#3B82F6] dark:text-[#06B6D4]" />
           <span>TOP</span>

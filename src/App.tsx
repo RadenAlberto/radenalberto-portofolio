@@ -113,7 +113,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <div className="relative min-h-screen flex flex-col bg-[#F8FAFC] dark:bg-[#090A0F] text-[#0F172A] dark:text-slate-100 bg-arch-grid transition-colors duration-200">
+      <div className="relative min-h-screen flex flex-col overflow-x-clip bg-[#F8FAFC] dark:bg-[#090A0F] text-[#0F172A] dark:text-slate-100 bg-arch-grid transition-colors duration-200">
         {/* Particle Constellation Backdrop */}
         {!showIntro && <AmbientBackdrop theme={theme} />}
 

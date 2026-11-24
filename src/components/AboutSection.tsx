@@ -46,8 +46,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ theme }) => {
             className="hidden sm:block absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-[#3B82F6] dark:border-[#06B6D4]"
           />
 
-          <div className="border border-slate-300/80 dark:border-white/15 p-6 sm:p-10 lg:p-12">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          <div className="border border-slate-300/80 dark:border-white/15 p-4 sm:p-8 lg:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               {/* Left Column: Editorial Identity & Academic Metrics */}
               <div className="lg:col-span-6 space-y-7">
                 <div>
@@ -186,7 +186,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ theme }) => {
               </div>
 
               {/* Right Column: Transparent 3D Interactive Gedung Utama UNTAR */}
-              <div className="lg:col-span-6 relative flex flex-col items-center justify-center">
+              <div className="lg:col-span-6 relative flex flex-col items-center justify-center pt-6 border-t border-slate-200/80 dark:border-white/10 lg:pt-0 lg:border-t-0">
                 <div className="hidden lg:block absolute left-0 top-6 font-mono text-[10px] tracking-[0.35em] uppercase text-slate-400 dark:text-slate-500 [writing-mode:vertical-rl]">
                   GEDUNG UTAMA · UNTAR
                 </div>

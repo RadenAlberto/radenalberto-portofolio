@@ -54,12 +54,13 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
   ];
 
   return (
-    <div className="space-y-20 sm:space-y-24 pb-8">
-      {/* 01 — Editorial Hero Split & Sticky Scroll Flight into 3D McLaren Senna */}
+    <div className="space-y-14 sm:space-y-20 pb-8">
+      {/* 01 — Clean Editorial Hero */}
       <HeroSection
         copied={copied}
         onCopyEmail={onCopyEmail}
         onExploreProjects={() => onNavigate('proyek')}
+        onExploreAbout={() => onNavigate('tentang')}
         theme={theme}
       />
 
@@ -76,7 +77,7 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
               className="hidden sm:block absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2 border-[#3B82F6] dark:border-[#06B6D4]"
             />
 
-            <div className="border border-slate-300/80 dark:border-white/15 p-6 sm:p-10">
+            <div className="border border-slate-300/80 dark:border-white/15 p-4 sm:p-8 lg:p-10">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Left Info */}
                 <div className="lg:col-span-6 space-y-6">
@@ -174,8 +175,8 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
                   </div>
                 </div>
 
-                {/* Right Transparent 3D Gedung II UNTAR */}
-                <div className="lg:col-span-6">
+                {/* Right Transparent 3D Gedung Utama UNTAR */}
+                <div className="lg:col-span-6 pt-6 border-t border-slate-200/80 dark:border-white/10 lg:pt-0 lg:border-t-0">
                   <UntarBuilding3D theme={theme} />
                 </div>
               </div>
