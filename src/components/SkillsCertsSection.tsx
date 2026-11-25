@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Download, Eye, Github } from 'lucide-react';
+import { ArrowRight, Eye, Github } from 'lucide-react';
 import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { RevealOnScroll } from './RevealOnScroll';
 import {
@@ -60,22 +60,13 @@ export const SkillsCertsSection: React.FC = () => {
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
-                href={PROFILE.cvUrl}
-                download="CV_Raden_Alberto.pdf"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium shadow-sm transition-colors whitespace-nowrap shrink-0"
-              >
-                <Download className="w-4 h-4" />
-                <span>Unduh CV (PDF)</span>
-              </a>
-
-              <a
                 href={PROFILE.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 dark:border-white/20 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] text-slate-800 dark:text-slate-100 text-sm font-medium transition-colors whitespace-nowrap shrink-0"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium shadow-sm transition-colors whitespace-nowrap shrink-0"
               >
                 <Github className="w-4 h-4" />
-                <span>GitHub</span>
+                <span>Buka GitHub</span>
               </a>
             </div>
           </div>

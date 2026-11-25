@@ -5,7 +5,6 @@ import {
   Code2,
   Compass,
   Copy,
-  Download,
   ExternalLink,
   FolderGit2,
   Moon,
@@ -183,22 +182,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         icon: <Copy className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />,
         action: () => {
           onCopyEmail();
-          onClose();
-        },
-      },
-      {
-        id: 'act-cv',
-        label: 'Unduh CV (PDF)',
-        subtitle: 'CV_Raden_Alberto.pdf',
-        category: 'Aksi Cepat',
-        keywords: 'unduh download cv resume pdf',
-        hint: 'PDF',
-        icon: <Download className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />,
-        action: () => {
-          const a = document.createElement('a');
-          a.href = PROFILE.cvUrl;
-          a.download = 'CV_Raden_Alberto.pdf';
-          a.click();
           onClose();
         },
       },

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Download, Eye, Gamepad2, Headphones } from 'lucide-react';
+import { ArrowRight, Eye, Gamepad2, Headphones } from 'lucide-react';
 import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { FocusArchitectureIllustration } from './FocusSection';
 import { HeroSection } from './HeroSection';
@@ -292,7 +292,7 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
         </div>
       </section>
 
-      {/* 05 — Perforated Credential Slips & CV Download + Activity Ledger Snapshot */}
+      {/* 05 — Perforated Credential Slips & Activity Ledger Snapshot */}
       <section aria-label="Ringkasan sertifikat, CV, dan aktivitas GitHub">
         <RevealOnScroll>
           <div className="pt-10 border-t border-slate-200 dark:border-white/15 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -316,21 +316,13 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-1">
-                <a
-                  href={PROFILE.cvUrl}
-                  download="CV_Raden_Alberto.pdf"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors whitespace-nowrap shrink-0"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Unduh CV (PDF)</span>
-                </a>
                 <button
                   type="button"
                   onClick={() => onNavigate('sertifikat')}
-                  className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#3B82F6] dark:text-[#06B6D4] hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                 >
                   <span>Lihat Keahlian &amp; Grid GitHub</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>

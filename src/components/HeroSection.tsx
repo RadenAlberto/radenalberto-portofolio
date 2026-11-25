@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowDownRight, Check, Copy, Download, Github, User } from 'lucide-react';
+import { ArrowDownRight, Check, Copy, Github, User } from 'lucide-react';
 import { PROFILE } from '../data/portfolio';
 
 export interface HeroViewProps {
@@ -51,15 +51,6 @@ export const HeroSection: React.FC<HeroViewProps> = ({
               <span>Lihat Proyek</span>
               <ArrowDownRight className="w-4 h-4" />
             </button>
-
-            <a
-              href={PROFILE.cvUrl}
-              download="CV_Raden_Alberto.pdf"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 dark:border-white/20 bg-white/85 dark:bg-[#0D0F17]/90 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] text-slate-800 dark:text-slate-100 text-sm font-medium transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06B6D4]"
-            >
-              <Download className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
-              <span>Unduh CV</span>
-            </a>
 
             <button
               type="button"

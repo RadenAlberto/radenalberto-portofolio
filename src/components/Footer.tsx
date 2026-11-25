@@ -63,13 +63,6 @@ export const Footer: React.FC<FooterProps> = ({ onCopyEmail }) => {
               >
                 SALIN EMAIL
               </button>
-              <a
-                href={PROFILE.cvUrl}
-                download="CV_Raden_Alberto.pdf"
-                className="text-slate-700 dark:text-slate-200 hover:text-[#3B82F6] dark:hover:text-[#06B6D4] transition-colors"
-              >
-                UNDUH CV
-              </a>
             </div>
           </div>
 
