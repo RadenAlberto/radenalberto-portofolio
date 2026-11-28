@@ -1,17 +1,18 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Eye, Gamepad2, Headphones } from 'lucide-react';
+import { ArrowRight, Eye, FileDown } from 'lucide-react';
 import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { FocusArchitectureIllustration } from './FocusSection';
 import { HeroSection } from './HeroSection';
-import { LofiWorkspaceDisc } from './OffTheClockSection';
 import { ProjectDetailModal, ProjectSpecCard } from './ProjectSpecCard';
 import { RevealOnScroll } from './RevealOnScroll';
 import { UntarBuilding3D } from './UntarBuilding3D';
+import { downloadFileFromUrl } from '../utils/downloadFile';
 import {
   CERTIFICATES,
   CertificateItem,
   FOCUS_ITEMS,
   PROFILE,
+  PROJECT_SECTION_CONFIG,
   PROJECTS,
   ProjectItem,
   getContributionWeeks,
@@ -22,8 +23,7 @@ export type PageId =
   | 'tentang'
   | 'fokus'
   | 'proyek'
-  | 'sertifikat'
-  | 'off-the-clock';
+  | 'sertifikat';
 
 interface HomeHighlightsProps {
   copied: boolean;
@@ -40,18 +40,18 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
 }) => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
-  const deckProjects = PROJECTS.slice(0, 3);
+  const showcaseProjects = useMemo(() => {
+    const prioritized = [
+      ...PROJECTS.filter((p) => p.featured),
+      ...PROJECTS.filter((p) => !p.featured),
+    ];
+    return prioritized.slice(0, PROJECT_SECTION_CONFIG.homeShowcaseCount);
+  }, []);
   const weeks = useMemo(() => getContributionWeeks(), []);
   const totalContribs = useMemo(
     () => weeks.flat().reduce((acc, day) => acc + day.count, 0),
     [weeks]
   );
-
-  const deckTransforms = [
-    'md:-rotate-2 md:translate-y-2 md:hover:rotate-0 md:hover:z-20',
-    'md:z-10 md:-translate-y-1 md:hover:z-20',
-    'md:rotate-2 md:translate-y-2 md:hover:rotate-0 md:hover:z-20',
-  ];
 
   return (
     <div className="space-y-14 sm:space-y-20 pb-8">
@@ -115,12 +115,17 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
                       </dt>
                       <dd className="col-span-8 flex flex-wrap items-center gap-2 text-sm text-slate-700 dark:text-slate-200">
                         <span>S1 Sistem Informasi</span>
-                        <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/15 dark:bg-[#06B6D4]/20 border border-[#3B82F6]/30 dark:border-[#06B6D4]/40 font-mono text-[10px] font-semibold text-[#2563EB] dark:text-[#22D3EE]">
-                          SEMESTER 5
+                        <span aria-hidden="true" className="text-slate-300 dark:text-white/25">·</span>
+                        <span className="font-mono text-xs font-semibold text-[#2563EB] dark:text-[#22D3EE]">
+                          Semester {PROFILE.semesterCurrent}
                         </span>
                       </dd>
                     </div>
                   </dl>
+
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {PROFILE.aboutParagraphs[0]}
+                  </p>
 
                   {/* Compact Semester + IPK Metrics */}
                   <div className="grid grid-cols-2 gap-4">
@@ -252,8 +257,8 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
         </div>
       </section>
 
-      {/* 04 — Fanned Interactive Project Deck (3 Featured Spec Cards) */}
-      <section aria-label="Proyek pilihan dalam tampilan kartu kipas" className="space-y-10">
+      {/* 04 — Showcase Karya & Eksperimen */}
+      <section aria-label="Proyek pilihan karya dan eksperimen" className="space-y-10">
         <RevealOnScroll>
           <div className="pb-5 border-b border-slate-200 dark:border-white/15 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
             <div>
@@ -272,23 +277,29 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
               onClick={() => onNavigate('proyek')}
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#3B82F6] dark:text-[#06B6D4] hover:underline self-start sm:self-auto cursor-pointer"
             >
-              <span>Lihat Semua 4 Proyek</span>
+              <span>Lihat Semua {PROJECTS.length} Proyek</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </RevealOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 lg:gap-6 items-stretch pt-2 pb-4">
-          {deckProjects.map((project, idx) => (
-            <RevealOnScroll key={project.id} delayMs={idx * 80} className="flex">
-              <ProjectSpecCard
-                project={project}
-                index={idx}
-                onSelect={setSelectedProject}
-                className={deckTransforms[idx] ?? ''}
-              />
-            </RevealOnScroll>
-          ))}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 ${
+            showcaseProjects.length === 4 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'
+          } gap-6 items-stretch pt-2 pb-2`}
+        >
+          {showcaseProjects.map((project, idx) => {
+            const originalIdx = PROJECTS.findIndex((p) => p.id === project.id);
+            return (
+              <RevealOnScroll key={project.id} delayMs={idx * 70} className="flex">
+                <ProjectSpecCard
+                  project={project}
+                  index={originalIdx}
+                  onSelect={setSelectedProject}
+                />
+              </RevealOnScroll>
+            );
+          })}
         </div>
       </section>
 
@@ -324,6 +335,20 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
                   <span>Lihat Keahlian &amp; Grid GitHub</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
+                {PROFILE.cvUrl && (
+                  <a
+                    href={PROFILE.cvUrl}
+                    download={PROFILE.cvDownloadName}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      void downloadFileFromUrl(PROFILE.cvUrl, PROFILE.cvDownloadName);
+                    }}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 dark:border-white/20 bg-white/85 dark:bg-[#0D0F17]/90 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] text-slate-800 dark:text-slate-100 text-sm font-medium transition-colors whitespace-nowrap shrink-0"
+                  >
+                    <FileDown className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
+                    <span>Unduh CV (PDF)</span>
+                  </a>
+                )}
               </div>
             </div>
 
@@ -385,51 +410,7 @@ export const HomeHighlights: React.FC<HomeHighlightsProps> = ({
         </RevealOnScroll>
       </section>
 
-      {/* 06 — Open-Canvas Off The Clock Spotlight */}
-      <section aria-label="Off The Clock">
-        <RevealOnScroll>
-          <div className="pt-10 border-t border-slate-200 dark:border-white/15 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5">
-              <LofiWorkspaceDisc />
-            </div>
-            <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center gap-3 font-mono text-xs tracking-wider text-slate-500 dark:text-slate-400">
-                <span className="text-[#3B82F6] dark:text-[#06B6D4] font-semibold">06</span>
-                <span className="w-8 h-px bg-slate-300 dark:bg-white/20" aria-hidden="true" />
-                <span>OFF THE CLOCK</span>
-              </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-slate-900 dark:text-slate-100 leading-none">
-                Di Luar Jam Koding
-              </h2>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                Saat sedang beristirahat dari tugas kuliah atau sesi ngoding, saya biasanya menikmati musik Lofi dan instrumental piano untuk menjaga fokus, atau mengeksplorasi mekanik pengembangan game ringan menggunakan Luau dan Roblox Studio.
-              </p>
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-                <div className="flex flex-wrap items-center gap-4 font-mono text-xs text-slate-600 dark:text-slate-300">
-                  <span className="inline-flex items-center gap-1.5">
-                    <Headphones className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
-                    <span>Lofi &amp; Piano</span>
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Gamepad2 className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
-                    <span>Luau · Roblox Studio</span>
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => onNavigate('off-the-clock')}
-                  className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#3B82F6] dark:text-[#06B6D4] hover:underline cursor-pointer"
-                >
-                  <span>Buka Off The Clock</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </RevealOnScroll>
-      </section>
-
-      {/* Direct Modal when clicking a card in the fanned deck */}
+      {/* Direct Modal when clicking a card in showcase */}
       <ProjectDetailModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}

@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Eye, Github } from 'lucide-react';
+import { ArrowRight, Eye, FileDown, Github } from 'lucide-react';
 import { CertificatePreviewModal } from './CertificatePreviewModal';
 import { RevealOnScroll } from './RevealOnScroll';
+import { downloadFileFromUrl } from '../utils/downloadFile';
 import {
   CERTIFICATES,
   CertificateItem,
@@ -59,13 +60,27 @@ export const SkillsCertsSection: React.FC = () => {
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
+              {PROFILE.cvUrl && (
+                <a
+                  href={PROFILE.cvUrl}
+                  download={PROFILE.cvDownloadName}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    void downloadFileFromUrl(PROFILE.cvUrl, PROFILE.cvDownloadName);
+                  }}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium shadow-sm transition-colors whitespace-nowrap shrink-0"
+                >
+                  <FileDown className="w-4 h-4" />
+                  <span>Unduh CV (PDF)</span>
+                </a>
+              )}
               <a
                 href={PROFILE.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-medium shadow-sm transition-colors whitespace-nowrap shrink-0"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 dark:border-white/20 bg-white/85 dark:bg-[#0D0F17]/90 hover:border-[#3B82F6] dark:hover:border-[#06B6D4] text-slate-800 dark:text-slate-100 text-sm font-medium transition-colors whitespace-nowrap shrink-0"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />
                 <span>Buka GitHub</span>
               </a>
             </div>

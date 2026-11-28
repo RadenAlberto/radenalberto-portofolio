@@ -17,7 +17,6 @@ const NAV_LINKS: Array<{ page: PageId; label: string }> = [
   { page: 'fokus', label: 'Fokus' },
   { page: 'proyek', label: 'Proyek' },
   { page: 'sertifikat', label: 'Sertifikat' },
-  { page: 'off-the-clock', label: 'Off The Clock' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({

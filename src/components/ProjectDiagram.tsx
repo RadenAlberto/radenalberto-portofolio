@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ProjectDiagramProps {
-  type: 'catatan' | 'fashion' | 'bigdata' | 'spk';
+  type: 'catatan' | 'music' | 'fashion' | 'bigdata' | 'spk';
 }
 
 export const ProjectDiagram: React.FC<ProjectDiagramProps> = ({ type }) => {
@@ -49,7 +49,9 @@ export const ProjectDiagram: React.FC<ProjectDiagramProps> = ({ type }) => {
             <rect x="32" y="68" width="52" height="8" rx="2" className="fill-slate-300 dark:fill-white/10" />
             <rect x="32" y="82" width="40" height="8" rx="2" className="fill-slate-300 dark:fill-white/10" />
             {/* Main editor area */}
-            <rect x="106" y="26" width="120" height="12" rx="3" fill="#06B6D4" fillOpacity="0.28" />
+            <text x="106" y="40" className="fill-[#0891B2] dark:fill-[#22D3EE]" fontSize="7.5" fontFamily="JetBrains Mono, monospace">
+              raln-catatanweb.onrender.com
+            </text>
             <rect x="106" y="46" width="182" height="6" rx="2" className="fill-slate-300 dark:fill-white/15" />
             <rect x="106" y="58" width="164" height="6" rx="2" className="fill-slate-300 dark:fill-white/10" />
             <rect x="106" y="70" width="140" height="6" rx="2" className="fill-slate-300 dark:fill-white/10" />
@@ -63,6 +65,49 @@ export const ProjectDiagram: React.FC<ProjectDiagramProps> = ({ type }) => {
               RESEND API
             </text>
             <path d="M190 110 H204" stroke="#06B6D4" strokeWidth="1.5" strokeDasharray="3 2" />
+          </svg>
+        )}
+
+        {type === 'music' && (
+          <svg
+            viewBox="0 0 320 160"
+            className="w-full h-full max-w-[290px]"
+            fill="none"
+            aria-label="Diagram antarmuka aplikasi pemutar musik Ralnfy"
+          >
+            <rect
+              x="16"
+              y="14"
+              width="288"
+              height="132"
+              rx="8"
+              className="fill-white dark:fill-[#131724] stroke-slate-300 dark:stroke-white/15"
+              strokeWidth="1.2"
+            />
+            {/* Album disc */}
+            <circle cx="66" cy="70" r="32" fill="#3B82F6" fillOpacity="0.16" stroke="#3B82F6" strokeOpacity="0.65" strokeWidth="1.5" />
+            <circle cx="66" cy="70" r="10" fill="#06B6D4" fillOpacity="0.35" stroke="#06B6D4" strokeWidth="1.2" />
+            {/* Track title & domain */}
+            <text x="114" y="38" className="fill-[#0891B2] dark:fill-[#22D3EE]" fontSize="8.5" fontFamily="JetBrains Mono, monospace">
+              RALNFY · MUSIC
+            </text>
+            <text x="114" y="51" className="fill-slate-500 dark:fill-slate-400" fontSize="7" fontFamily="JetBrains Mono, monospace">
+              ralnfy.ai.studio
+            </text>
+            {/* Equalizer bars */}
+            <rect x="114" y="72" width="6" height="18" rx="2" fill="#3B82F6" fillOpacity="0.6" />
+            <rect x="124" y="64" width="6" height="26" rx="2" fill="#06B6D4" />
+            <rect x="134" y="70" width="6" height="20" rx="2" fill="#3B82F6" fillOpacity="0.75" />
+            <rect x="144" y="60" width="6" height="30" rx="2" fill="#06B6D4" fillOpacity="0.9" />
+            <rect x="154" y="68" width="6" height="22" rx="2" fill="#3B82F6" fillOpacity="0.65" />
+            <rect x="164" y="74" width="6" height="16" rx="2" fill="#06B6D4" fillOpacity="0.7" />
+            {/* Queue list right */}
+            <rect x="212" y="28" width="76" height="16" rx="3" fill="#3B82F6" fillOpacity="0.14" stroke="#3B82F6" strokeOpacity="0.5" />
+            <rect x="212" y="50" width="76" height="14" rx="3" className="fill-slate-200 dark:fill-white/10" />
+            <rect x="212" y="70" width="76" height="14" rx="3" className="fill-slate-200 dark:fill-white/10" />
+            {/* Progress bar */}
+            <rect x="34" y="122" width="252" height="6" rx="3" className="fill-slate-200 dark:fill-white/10" />
+            <rect x="34" y="122" width="142" height="6" rx="3" fill="#06B6D4" />
           </svg>
         )}
 
@@ -100,8 +145,12 @@ export const ProjectDiagram: React.FC<ProjectDiagramProps> = ({ type }) => {
             />
             <rect x="131" y="22" width="58" height="58" rx="6" fill="#06B6D4" fillOpacity="0.18" stroke="#06B6D4" strokeOpacity="0.55" />
             <path d="M148 40 L160 34 L172 40 L168 62 H152 Z" stroke="#06B6D4" strokeWidth="1.5" fill="#06B6D4" fillOpacity="0.2" />
-            <rect x="131" y="88" width="44" height="7" rx="2" className="fill-slate-400 dark:fill-white/25" />
-            <rect x="131" y="100" width="58" height="6" rx="2" className="fill-slate-300 dark:fill-white/10" />
+            <text x="160" y="94" textAnchor="middle" className="fill-slate-600 dark:fill-slate-200" fontSize="8" fontFamily="JetBrains Mono, monospace">
+              UNIQLOPLUS
+            </text>
+            <text x="160" y="105" textAnchor="middle" className="fill-slate-400 dark:fill-slate-400" fontSize="6.2" fontFamily="JetBrains Mono, monospace">
+              uniqloplus.onrender.com
+            </text>
             <rect x="131" y="116" width="58" height="22" rx="5" fill="#3B82F6" />
             <text x="160" y="130" textAnchor="middle" fill="#FFFFFF" fontSize="8.5" fontFamily="JetBrains Mono, monospace">
               + CART
@@ -156,6 +205,9 @@ export const ProjectDiagram: React.FC<ProjectDiagramProps> = ({ type }) => {
               rx="6"
               className="fill-white dark:fill-[#131724] stroke-slate-300 dark:stroke-white/15"
             />
+            <text x="34" y="79" className="fill-slate-500 dark:fill-slate-400" fontSize="7.2" fontFamily="JetBrains Mono, monospace">
+              NYC TAXI · GEMPA DATASET
+            </text>
             {/* Bars */}
             <rect x="38" y="108" width="16" height="24" rx="2" fill="#3B82F6" fillOpacity="0.5" />
             <rect x="64" y="96" width="16" height="36" rx="2" fill="#3B82F6" fillOpacity="0.7" />
@@ -191,8 +243,8 @@ export const ProjectDiagram: React.FC<ProjectDiagramProps> = ({ type }) => {
               rx="7"
               className="fill-white dark:fill-[#131724] stroke-slate-300 dark:stroke-white/15"
             />
-            <text x="30" y="36" className="fill-slate-500 dark:fill-slate-400" fontSize="8.5" fontFamily="JetBrains Mono, monospace">
-              MATRIKS AHP
+            <text x="30" y="36" className="fill-slate-500 dark:fill-slate-400" fontSize="8" fontFamily="JetBrains Mono, monospace">
+              AHP · PROFILE
             </text>
             {[0, 1, 2].map((row) =>
               [0, 1, 2].map((col) => {

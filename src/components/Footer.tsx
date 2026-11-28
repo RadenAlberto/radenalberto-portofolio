@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { PROFILE } from '../data/portfolio';
+import { downloadFileFromUrl } from '../utils/downloadFile';
 
 interface FooterProps {
   onCopyEmail: () => void;
@@ -40,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyEmail }) => {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
               <div className="font-mono text-xs uppercase tracking-widest text-[#3B82F6] dark:text-[#06B6D4]">
-                WORKSPACE SELESAI · MAGANG IT / MBKM 2026–2027
+                TERBUKA UNTUK MAGANG IT / MBKM · DES 2026 – JUN 2027
               </div>
               <h2 className="font-display text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-slate-900 dark:text-slate-100 leading-none">
                 Mari Berkolaborasi.
@@ -48,6 +49,19 @@ export const Footer: React.FC<FooterProps> = ({ onCopyEmail }) => {
             </div>
 
             <div className="flex flex-wrap items-center gap-6 font-mono text-xs tracking-wider uppercase">
+              {PROFILE.cvUrl && (
+                <a
+                  href={PROFILE.cvUrl}
+                  download={PROFILE.cvDownloadName}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    void downloadFileFromUrl(PROFILE.cvUrl, PROFILE.cvDownloadName);
+                  }}
+                  className="text-slate-700 dark:text-slate-200 hover:text-[#3B82F6] dark:hover:text-[#06B6D4] transition-colors"
+                >
+                  UNDUH CV
+                </a>
+              )}
               <a
                 href={PROFILE.githubUrl}
                 target="_blank"
@@ -56,6 +70,16 @@ export const Footer: React.FC<FooterProps> = ({ onCopyEmail }) => {
               >
                 GITHUB
               </a>
+              {PROFILE.linkedinUrl && (
+                <a
+                  href={PROFILE.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-700 dark:text-slate-200 hover:text-[#3B82F6] dark:hover:text-[#06B6D4] transition-colors"
+                >
+                  LINKEDIN
+                </a>
+              )}
               <button
                 type="button"
                 onClick={onCopyEmail}

@@ -6,6 +6,7 @@ import {
   Compass,
   Copy,
   ExternalLink,
+  FileDown,
   FolderGit2,
   Moon,
   Search,
@@ -20,6 +21,7 @@ import {
   SKILL_GROUPS,
 } from '../data/portfolio';
 import type { PageId } from './HomeHighlights';
+import { downloadFileFromUrl } from '../utils/downloadFile';
 
 interface CommandItem {
   id: string;
@@ -94,8 +96,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       },
       {
         id: 'nav-proyek',
-        label: 'Portofolio Proyek (4 Karya)',
-        subtitle: 'CatatanApp, Uniqlo Mobile UI, Big Data NYC Taxi, SPK AHP',
+        label: `Portofolio Proyek (${PROJECTS.length} Karya)`,
+        subtitle: 'CatatanApp, Ralnfy, UniqloPlus, Big Data, SPK AHP',
         category: 'Halaman',
         keywords: 'proyek project portfolio karya web mobile data sistem',
         hint: '#proyek',
@@ -105,22 +107,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       {
         id: 'nav-sertifikat',
         label: 'Keahlian, Sertifikat & Aktivitas Kode',
-        subtitle: 'Tech stack, Python Pro Algonova, Kurikulum UNTAR, CV',
+        subtitle: 'Tech stack, Python Pro Algonova, Kurikulum UNTAR',
         category: 'Halaman',
-        keywords: 'sertifikat keahlian skill cv github activity',
+        keywords: 'sertifikat keahlian skill github activity',
         hint: '#sertifikat',
         icon: <ArrowRight className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />,
         action: () => openPage('sertifikat'),
-      },
-      {
-        id: 'nav-off-clock',
-        label: 'Off The Clock',
-        subtitle: 'Musik Lofi, piano instrumental, Luau & Roblox Studio',
-        category: 'Halaman',
-        keywords: 'off the clock hobi lofi piano luau roblox',
-        hint: '#off-the-clock',
-        icon: <ArrowRight className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />,
-        action: () => openPage('off-the-clock'),
       },
     ];
 
@@ -172,6 +164,23 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     }));
 
     const actionCommands: CommandItem[] = [
+      ...(PROFILE.cvUrl
+        ? [
+            {
+              id: 'act-cv',
+              label: 'Unduh CV (PDF)',
+              subtitle: PROFILE.cvDownloadName,
+              category: 'Aksi Cepat' as const,
+              keywords: 'cv resume unduh download pdf magang',
+              hint: 'PDF',
+              icon: <FileDown className="w-4 h-4 text-[#3B82F6] dark:text-[#06B6D4]" />,
+              action: () => {
+                void downloadFileFromUrl(PROFILE.cvUrl, PROFILE.cvDownloadName);
+                onClose();
+              },
+            },
+          ]
+        : []),
       {
         id: 'act-email',
         label: `Salin Email (${PROFILE.email})`,
@@ -291,7 +300,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   if (!isOpen) return null;
 
-  const quickChips = ['Next.js', 'Flutter', 'Python', 'Oracle', 'C++', 'CV'];
+  const quickChips = ['Next.js', 'Flutter', 'Python', 'Oracle', 'C++', 'UNTAR'];
 
   return (
     <div

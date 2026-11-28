@@ -1,1 +1,16 @@
-Taruh foto atau screenshot proyek (.jpg, .png, .webp) di folder ini, lalu tambahkan imageUrl: '/proyek/nama-foto.png' pada proyek terkait di src/data/portfolio.ts
+CARA MENAMBAH FOTO & KARYA DI PORTFOLIO:
+
+1. Taruh foto atau screenshot proyek (.jpg, .png, .webp) ke dalam folder ini (public/proyek/).
+   Contoh:
+   - public/proyek/catatan-1.png
+   - public/proyek/catatan-2.png
+
+2. Buka file src/data/portfolio.ts lalu cari bagian PROJECTS:
+   - Foto utama kartu:
+     imageUrl: '/proyek/catatan-1.png',
+   - Banyak foto (galeri slide saat kartu diklik):
+     gallery: ['/proyek/catatan-2.png', '/proyek/catatan-3.png'],
+   - Agar screenshot HP vertikal tampil utuh (tidak terpotong):
+     imageFit: 'contain',
+   - Untuk menonjolkan karya di Beranda & mode Bento:
+     featured: true,

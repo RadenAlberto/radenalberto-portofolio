@@ -85,8 +85,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ theme }) => {
                     </dt>
                     <dd className="col-span-8 flex flex-wrap items-center gap-2 text-sm sm:text-[15px] text-slate-800 dark:text-slate-200">
                       <span>S1 Sistem Informasi</span>
-                      <span className="px-2 py-0.5 rounded-full bg-[#3B82F6]/15 dark:bg-[#06B6D4]/20 border border-[#3B82F6]/30 dark:border-[#06B6D4]/40 font-mono text-[10px] font-semibold uppercase tracking-wider text-[#2563EB] dark:text-[#22D3EE]">
-                        Semester 5
+                      <span aria-hidden="true" className="text-slate-300 dark:text-white/25">·</span>
+                      <span className="font-mono text-xs font-semibold text-[#2563EB] dark:text-[#22D3EE]">
+                        Semester {PROFILE.semesterCurrent}
                       </span>
                     </dd>
                   </div>
@@ -143,7 +144,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ theme }) => {
                               isCompleted
                                 ? 'bg-[#3B82F6]'
                                 : isCurrent
-                                ? 'bg-[#06B6D4] shadow-[0_0_10px_rgba(6,182,212,0.8)] animate-pulse'
+                                ? 'bg-[#06B6D4] shadow-[0_0_8px_rgba(6,182,212,0.65)]'
                                 : 'bg-slate-200 dark:bg-white/10'
                             }`}
                           />

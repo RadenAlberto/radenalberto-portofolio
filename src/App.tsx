@@ -7,9 +7,7 @@ import { CommandPalette } from './components/CommandPalette';
 import { FocusSection } from './components/FocusSection';
 import { Footer } from './components/Footer';
 import { HomeHighlights, PageId } from './components/HomeHighlights';
-import { IntroWorkspace } from './components/IntroWorkspace';
 import { Navbar } from './components/Navbar';
-import { OffTheClockSection } from './components/OffTheClockSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { SkillsCertsSection } from './components/SkillsCertsSection';
@@ -21,7 +19,6 @@ const VALID_PAGES: PageId[] = [
   'fokus',
   'proyek',
   'sertifikat',
-  'off-the-clock',
 ];
 
 function getInitialPage(): PageId {
@@ -30,7 +27,6 @@ function getInitialPage(): PageId {
 }
 
 export default function App() {
-  const [showIntro, setShowIntro] = useState(true);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [activePage, setActivePage] = useState<PageId>(getInitialPage);
   const [requestedProjectId, setRequestedProjectId] = useState<string | null>(null);
@@ -82,14 +78,12 @@ export default function App() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
-        if (!showIntro) {
-          setCommandOpen((prev) => !prev);
-        }
+        setCommandOpen((prev) => !prev);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [showIntro]);
+  }, []);
 
   const handleCopyEmail = useCallback(async () => {
     try {
@@ -115,13 +109,10 @@ export default function App() {
     <MotionConfig reducedMotion="user">
       <div className="relative min-h-screen flex flex-col overflow-x-clip bg-[#F8FAFC] dark:bg-[#090A0F] text-[#0F172A] dark:text-slate-100 bg-arch-grid transition-colors duration-200">
         {/* Particle Constellation Backdrop */}
-        {!showIntro && <AmbientBackdrop theme={theme} />}
+        <AmbientBackdrop theme={theme} />
 
         {/* Top Fixed Electric Blue Scroll Progress Indicator */}
-        {!showIntro && <ScrollProgressBar />}
-
-        {/* Auto-Playing Computer Screen Zoom-In Intro */}
-        <IntroWorkspace isVisible={showIntro} onComplete={() => setShowIntro(false)} />
+        <ScrollProgressBar />
 
         {/* Sticky Glassmorphism Header */}
         <Navbar
@@ -175,7 +166,6 @@ export default function App() {
                 />
               )}
               {activePage === 'sertifikat' && <SkillsCertsSection />}
-              {activePage === 'off-the-clock' && <OffTheClockSection />}
             </motion.div>
           </AnimatePresence>
         </main>
